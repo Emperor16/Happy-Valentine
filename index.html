@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine?</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="main-wrapper">
+        <div id="spongebobContainer" class="spongebob-container" style="display: none;">
+            <img id="spongebobGif" src="https://media.giphy.com/media/OPU6wzx8JrHna/giphy.gif" alt="SpongeBob" class="spongebob-gif">
+        </div>
+
+
+        <div id="nameInputContainer" class="name-input-container">
+            <h2>Let's get personal 💕</h2>
+            <p class="italics">Enter your name madmoiselle...</p>
+            <input type="text" id="nameInput" placeholder="Your name..." class="name-input">
+            <button id="submitNameBtn" class="submit-btn">Enter</button>
+        </div>
+
+        <div id="valentineCard" class="card" style="display: none;">
+            <h1>Happy Valentine's Day ❤️</h1>
+            <h2>Dear <span id="recipientName" style="color:#ff4d6d;"></span> 🌸</h2>
+
+            <p>With all my heart 💕</p>
+            <p><strong>Will you be my Valentine?</strong> 💌</p>
+
+            <div class="buttons">
+                <button id="yesBtn">Yes 💖</button>
+                <button class="no-btn" id="noBtn">No ❌</button>
+            </div>
+        </div>
+
+
+
+        <div id="celebrationContainer" class="celebration-container" style="display: none;">
+            <div class="celebration-content">
+                <div class="celebration-gif-wrapper">
+                    <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZ20xYTdjZjF4dzNzcWU5cHgxNGZqYW9rM3JpODRnZTlqcDE0d2V6dCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/xRJZH4Ajr973y/giphy.gif" alt="Dancing SpongeBob" class="celebration-gif">
+                </div>
+                <h2 class="celebration-text">You've made my day 💖</h2>
+                <h2 class="celebration-text">Happy Valentine! 🎉</h2>
+                <p class="celebration-subtext">🥰🌹💕</p>
+                 <p class="star">give a star on my github🥺🥺</p>
+            </div>
+
+        </div>
+        
+    </div>
+
+    <script src="scripts.js"></script>
+
+</body>
+</html>
