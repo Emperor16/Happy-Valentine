@@ -1,4 +1,3 @@
-// DOM Elements
 const nameInputContainer = document.getElementById("nameInputContainer");
 const valentineCard = document.getElementById("valentineCard");
 const nameInput = document.getElementById("nameInput");
@@ -10,7 +9,7 @@ const spongebobContainer = document.getElementById("spongebobContainer");
 const spongebobGif = document.getElementById("spongebobGif");
 const celebrationContainer = document.getElementById("celebrationContainer");
 
-// My random button selectors
+
 const colors = [
   "#ff6b6b",
   "#feca57",
@@ -24,8 +23,6 @@ const colors = [
   "#009432",
 ];
 let noBtnClicks = 0;
-let moveDistance = 50; // Starting move distance
-
 
 function submitName() {
   const name = nameInput.value.trim();
@@ -48,8 +45,6 @@ if (nameInput && submitNameBtn) {
   submitNameBtn.addEventListener("click", submitName);
 }
 
-
-
 if (yesBtn) {
   yesBtn.addEventListener("click", function () {
     valentineCard.style.display = "none";
@@ -62,27 +57,39 @@ if (yesBtn) {
   });
 }
 
-
 if (noBtn) {
+  // Function to move button to random position
+  function moveButtonRandomly() {
+    // Get viewport dimensions
+    const maxX = window.innerWidth - noBtn.offsetWidth;
+    const maxY = window.innerHeight - noBtn.offsetHeight;
+
+    // Random position within viewport
+    const randomX = Math.random() * maxX;
+    const randomY = Math.random() * maxY;
+
+    // Apply new position
+    noBtn.style.position = "fixed";
+    noBtn.style.left = randomX + "px";
+    noBtn.style.top = randomY + "px";
+    noBtn.style.transition = "all 0.2s ease";
+  }
 
   noBtn.addEventListener("click", function () {
     noBtnClicks++;
-    moveDistance += 30; 
-
 
     if (spongebobContainer && spongebobGif) {
       const currentScale = 1 + noBtnClicks * 0.15;
       spongebobContainer.style.display = "block";
       spongebobContainer.style.marginBottom = "20px";
 
-      
       spongebobGif.src =
         "https://media.giphy.com/media/OPU6wzx8JrHna/giphy.gif";
       spongebobGif.style.transform = `scale(${currentScale})`;
       spongebobGif.style.transition = "transform 0.3s ease";
       spongebobGif.style.animation = "none";
 
-      // Change GIF on every 2nd click {this isbasically useless}
+      // Change GIF on every 2nd click
       if (noBtnClicks % 2 === 0) {
         const spongebobGifs = [
           "https://media.giphy.com/media/OPU6wzx8JrHna/giphy.gif",
@@ -92,35 +99,15 @@ if (noBtn) {
           spongebobGifs[Math.floor(Math.random() * spongebobGifs.length)];
       }
     }
-
-    // Fade out and back in
-    noBtn.style.transition = "opacity 0.2s ease, transform 0.3s ease";
-    noBtn.style.opacity = "0";
-    noBtn.style.transform = `translate(${Math.random() * 40 - 20}px, ${Math.random() * 40 - 20}px)`;
-
-    setTimeout(() => {
-      noBtn.style.opacity = "1";
-      noBtn.style.transform = "translate(0, 0)";
-    }, 200);
   });
 
+  // Move button to random position on hover
+  noBtn.addEventListener("mouseenter", function () {
+    moveButtonRandomly();
 
-  noBtn.addEventListener("mouseenter", () => {
-    const moveX = Math.random() * moveDistance * 2 - moveDistance;
-    const moveY = Math.random() * moveDistance * 1.5 - moveDistance * 0.75;
-
-    noBtn.style.transition = "transform 0.1s ease";
-    noBtn.style.transform = `translate(${moveX}px, ${moveY}px)`;
-
-
+    // Random color change on hover
     const randomColor = colors[Math.floor(Math.random() * colors.length)];
     noBtn.style.backgroundColor = randomColor;
-  });
-
-  // Reset position when mouse leaves
-  noBtn.addEventListener("mouseleave", () => {
-    noBtn.style.transition = "transform 0.2s ease";
-    noBtn.style.transform = "translate(0, 0)";
   });
 }
 
@@ -134,9 +121,3 @@ setInterval(() => {
   document.body.appendChild(heart);
   setTimeout(() => heart.remove(), 4000);
 }, 300);
-
-
-
-
-
-//140lines of js code
